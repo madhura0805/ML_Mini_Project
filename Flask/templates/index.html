@@ -30,40 +30,66 @@
 
     /* Navbar */
     nav {
-      background: rgba(255, 255, 255, 0.3);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 1rem 2rem;
+      background: transparent;
+      transition: background 0.4s ease, box-shadow 0.4s ease;
     }
 
     nav a {
-      color: #2e7d32 !important;
+      color: white !important;
       font-weight: 500;
-      transition: 0.3s;
+      transition: color 0.3s ease;
     }
 
-    nav a:hover {
-      color: #1b5e20 !important;
+    nav.scrolled {
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
+
+    nav.scrolled a {
+      color: #2e7d32 !important;
+      font-weight: 600;
+    }
+
+    .navbar-brand {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+
+  .navbar-nav .nav-link {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-left: 20px;
+  }
 
     /* Banner */
     .main-banner {
       height: 90vh;
-      background: linear-gradient(120deg, #66bb6a, #43a047);
+      background: 
+        linear-gradient(rgba(0, 40, 0, 0.8), rgba(0, 40, 0, 0.8)),
+        url('https://www.stockvault.net/data/2017/05/19/236279/preview16.jpg') center/cover no-repeat;
       color: white;
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
       text-align: center;
+      padding: 2rem;
     }
 
+
     .main-banner h4 {
-      font-size: 2rem;
+      font-size: 4rem;
       font-weight: 600;
     }
 
     .main-banner p {
-      font-size: 1.1rem;
+      font-size: 1.5rem;
       max-width: 600px;
       margin: 20px auto;
       color: #f1f8e9;
@@ -112,19 +138,39 @@
       margin: 2rem auto;
       padding: 3rem;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+
+      /* Center the section */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      width: 60%; /* Optional: make it a bit narrower */
     }
 
+    /* Center the form content */
+    #test form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Button styling */
     .btn-primary {
       background: #43a047;
       border: none;
       border-radius: 25px;
       padding: 10px 30px;
       font-weight: 500;
+      margin-top: 1rem;
+      transition: background 0.3s ease;
     }
 
     .btn-primary:hover {
       background: #2e7d32;
     }
+
+
 
     /* Image preview */
     #output-image {
@@ -203,10 +249,7 @@
         </div>
         <div class="col-lg-6">
           <h3 class="title text-center">About</h3>
-          <p class="text-justify">Food security for billions of people requires minimizing crop damage by timely detection
-            of diseases. Developing methods for detection of plant diseases serves the dual purpose of increasing crop yield
-            and reducing pesticide use. The traditional method of disease detection has been manual examination, which is
-            time-consuming and costly for millions of farmers worldwide.</p>
+          <p class="text-justify">Agriculture sustains life, but plant diseases can severely affect productivity and farmer income. Early and accurate detection helps prevent large-scale crop loss and reduces unnecessary pesticide use. Plant-AI leverages machine learning to identify diseases directly from leaf images, making detection faster, easier, and more accessible for farmers everywhere.</p>
         </div>
       </div>
     </div>
@@ -281,5 +324,18 @@
       reader.readAsDataURL(event.target.files[0]);
     }
   </script>
+
+  <script>
+  window.addEventListener('scroll', function() {
+    const nav = document.querySelector('nav');
+    const bannerHeight = document.querySelector('.main-banner').offsetHeight;
+    if (window.scrollY > bannerHeight - 100) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  });
+</script>
+
 </body>
 </html>
