@@ -44,15 +44,16 @@
 
     /* Result Card */
     .result-card {
-      background: white;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      border-radius: 15px;
-      padding: 2rem;
-      margin: 3rem auto;
-      max-width: 700px;
-      text-align: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
+  background: white;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 0; /* remove curve to make it flush with edges if you want */
+  padding: 2rem;
+  margin: 2rem 0;
+  width: 100%;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
 
     .result-card:hover {
       transform: translateY(-5px);
